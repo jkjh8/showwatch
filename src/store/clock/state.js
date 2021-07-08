@@ -1,10 +1,8 @@
 export default function () {
   return {
-    currentTime: '',
-    startTime: '',
-    takeTime: '',
-    date: '',
-    time: '',
-    ampm: ''
+    startTime: null,
+    takeTime: null,
+    time: null,
+    startStatus: false
   }
 }

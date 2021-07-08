@@ -1,9 +1,9 @@
-import { app, BrowserWindow, nativeTheme } from 'electron'
+import { app, BrowserWindow, nativeTheme, ipcMain } from 'electron'
 import path from 'path'
 
 try {
   if (process.platform === 'win32' && nativeTheme.shouldUseDarkColors === true) {
-    require('fs').unlinkSync(require('path').join(app.getPath('userData'), 'DevTools Extensions'))
+    require('fs').unlinkSync(path.join(app.getPath('userData'), 'DevTools Extensions'))
   }
 } catch (_) { }
 
@@ -18,13 +18,20 @@ function createWindow () {
     height: 600,
     useContentSize: true,
     webPreferences: {
-      contextIsolation: true,
+      nodeIntegration: true,
+      enableRemoteModule: true,
+      contextIsolation: false,
+      nodeIntegrationInWorker: true,
+      webSecurity: false,
       // More info: /quasar-cli/developing-electron-apps/electron-preload-script
       preload: path.resolve(__dirname, process.env.QUASAR_ELECTRON_PRELOAD)
     }
   })
 
   mainWindow.loadURL(process.env.APP_URL)
+
+  // MENU DISABLE
+  // mainWindow.setMenuBarVisibility(false)
 
   if (process.env.DEBUGGING) {
     // if on DEV or Production with debug enabled
@@ -53,4 +60,8 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow()
   }
+})
+
+ipcMain.on('fullscreen', () => {
+  console.log('get full')
 })

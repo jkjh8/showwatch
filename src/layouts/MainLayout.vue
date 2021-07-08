@@ -7,22 +7,28 @@
         <q-btn
           round
           flat
-          icon="home"
+          icon="timer"
         />
 
         <q-toolbar-title class="justify-center">
-          <div class="text-body1 text-weight-thin">
-            {{ date }}
+          <div
+            v-if="time"
+            class="text-body1 text-weight-thin"
+          >
+            {{ time.date }}
           </div>
         </q-toolbar-title>
 
         <div>
           <q-btn
-            round
             flat
-            icon="settings"
+            round
+            color="grey"
+            icon="fullscreen"
+            @click="fullscreen"
           />
         </div>
+
       </q-toolbar>
     </q-header>
 
@@ -36,24 +42,30 @@
 import { defineComponent, computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import moment from 'moment'
+import { ipcRenderer } from 'electron'
+// const ipcRenderer = require('electron').ipcRenderer
 
 export default defineComponent({
   name: 'MainLayout',
   setup () {
     const store = useStore()
-    const date = computed(() => store.state.clock.date)
+    moment.locale('ko')
+    store.dispatch('clock/updateTime', moment())
+    const time = computed(() => store.state.clock.time)
 
     onMounted(() => {
-      moment.locale('ko')
-      store.dispatch('clock/updateTime', moment())
-
       setInterval(() => {
         store.dispatch('clock/updateTime', moment())
       }, 100)
     })
 
+    function fullscreen () {
+      console.log('full')
+      ipcRenderer.send('fullscreen')
+    }
+
     return {
-      date
+      time, fullscreen
     }
   }
 })

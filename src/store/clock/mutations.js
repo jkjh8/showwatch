@@ -1,5 +1,5 @@
-export function updateCurrentTime (state, payload) {
-  state.currentTime = payload
+export function updateStart (state, payload) {
+  state.startStatus = payload
 }
 
 export function updateStartTime (state, payload) {
@@ -12,12 +12,4 @@ export function updateTakeTime (state, payload) {
 
 export function updateTime (state, payload) {
   state.time = payload
-}
-
-export function updateDate (state, payload) {
-  state.date = payload
-}
-
-export function updateAmpm (state, payload) {
-  state.ampm = payload
 }
