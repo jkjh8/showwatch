@@ -19,7 +19,7 @@
           </div>
         </q-toolbar-title>
 
-        <div>
+        <!-- <div>
           <q-btn
             flat
             round
@@ -27,7 +27,7 @@
             icon="fullscreen"
             @click="fullscreen"
           />
-        </div>
+        </div> -->
 
       </q-toolbar>
     </q-header>
@@ -42,7 +42,7 @@
 import { defineComponent, computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import moment from 'moment'
-import { ipcRenderer } from 'electron'
+// import { ipcRenderer } from 'electron'
 // const ipcRenderer = require('electron').ipcRenderer
 
 export default defineComponent({
@@ -61,7 +61,7 @@ export default defineComponent({
 
     function fullscreen () {
       console.log('full')
-      ipcRenderer.send('fullscreen')
+      // ipcRenderer.send('fullscreen')
     }
 
     return {

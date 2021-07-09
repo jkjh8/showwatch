@@ -1,8 +1,8 @@
 {
-  "name": "stopwatch",
+  "name": "showwatch",
   "version": "0.0.1",
   "description": "show watch",
-  "productName": "watch",
+  "productName": "Timer",
   "author": "jkjh8 <jkjh82@naver.com>",
   "private": true,
   "scripts": {
@@ -19,8 +19,9 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
-    "@quasar/app": "^3.0.0",
+    "@quasar/app": "^3.0.1",
     "electron": "^13.1.6",
+    "electron-builder": "^22.4.0",
     "eslint": "^7.14.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.19.1",
