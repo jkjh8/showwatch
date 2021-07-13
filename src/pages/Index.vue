@@ -2,18 +2,16 @@
   <q-page class="flex flex-center">
     <div class="text-white">
       <div>
-        <div>
+        <div style="position: relative; top: 5vh">
           현재시간
         </div>
-        <div class="fit row justify-center q-my-lg">
-          <span class="text-h1" style="font-size: 10rem">{{ time.time }}</span>
-          <span class="text-h4 q-ml-sm self-end" style="font-size: 4rem">{{ time.ampm }}</span>
+        <div class="row">
+          <div class="self-center" style="font-size: 18vmin">{{ time.time }}
+            <span style="font-size: 5vmin">{{ time.ampm }}</span>
+          </div>
         </div>
       </div>
-      <div
-        v-if="durationView"
-        class="q-my-lg q-pt-lg"
-      >
+      <div v-if="durationView">
         <div>
           <div>
             시작시간
@@ -22,24 +20,24 @@
             v-if="startTime"
             class="text-grey"
           >
-            <span class="text-h4">{{ startTime.time }}</span>
-            <span class="text-h6">{{ startTime.ampm }}</span>
+            <div style="font-size: 4vmin;">{{ startTime.time }}
+              <span style="font-size: 2vmin;">{{ startTime.ampm }}</span>
+            </div>
           </div>
         </div>
-        <div class="q-my-lg q-pb-lg">
-          <div>
+        <div>
+          <div style="position: relative; top: 5vh">
             경과시간
           </div>
           <div
             v-if="durationView"
-            class="text-yellow fit row justify-center text-h1 q-my-lg q-pt-md"
-            style="font-size: 13rem"
+            class="text-yellow fit row justify-center"
           >
-            <span>{{ takeTime }}</span>
+            <span style="font-size: 23vmin;">{{ takeTime }}</span>
           </div>
         </div>
       </div>
-      <div class="fit row justify-center q-mt-xl">
+      <div class="fit row justify-center">
         <div v-if="!startStatus">
           <q-btn
             color="grey"
