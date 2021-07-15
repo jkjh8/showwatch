@@ -2,7 +2,7 @@
   <q-page class="flex flex-center">
     <div class="text-white">
       <div>
-        <div style="position: relative; top: 5vh">
+        <div style="position: relative; top: 5vmin; font-size: 2vmin">
           현재시간
         </div>
         <div class="row">
@@ -13,7 +13,7 @@
       </div>
       <div v-if="durationView">
         <div>
-          <div>
+          <div style="font-size: 2vmin;">
             시작시간
           </div>
           <div
@@ -26,7 +26,7 @@
           </div>
         </div>
         <div>
-          <div style="position: relative; top: 5vh">
+          <div style="position: relative; top: 6vmin; font-size: 2vmin;">
             경과시간
           </div>
           <div
